@@ -1,0 +1,57 @@
+package viva.pkg2q1;
+import java.util.Scanner;
+public class Viva2Q1 {
+
+//PART1:INPUT AND OUTPUT    
+    public static void main(String[] args) {
+        Scanner k=new Scanner(System.in);
+        while (true){
+            System.out.print("Enter string: ");
+            String GivenString=k.nextLine();
+            //If it is all lowercase letter,it will run the program.
+            if (GivenString.matches("[a-z]+")){
+                String longestPalindrome = findLongestPalindromicSubstring(GivenString);
+                System.out.println("The longest palindromic substring is: " + longestPalindrome);
+                break;
+            }
+            //Or else it will endless requesting reinput
+            else{
+                System.out.println("please enter again.");        
+                        }
+            }
+                
+            }
+    //PART 2:Extract substring
+    public static String findLongestPalindromicSubstring(String possible) {
+       //Set a empty string to store the palindrome
+       String longestPalinString="";
+       //comparison with other palindrome
+       int maxlength=0;
+       //extract all substring
+       for(int i=0;i<possible.length();i++){ //outer loop=check from starting point
+           for(int j=i;j<possible.length();j++){ //inner loop check from the ending point
+               String Substring=possible.substring(i,j+1);// form (start,end)
+               //condition 1(palindrome)+condition 2(longest(by exceeding exist maxlength)) is fufiled..
+               if(IdentifyPalindrome(Substring)&&Substring.length()>maxlength){
+                   longestPalinString=Substring;
+                   maxlength=Substring.length();
+           }
+       }
+    }
+       return longestPalinString;
+    }
+    //Part 3:Extract out a palindrome
+public static boolean IdentifyPalindrome(String possible) {
+        int left=0,right=possible.length()-1;
+        //checking from left and from right simultaneously while length from left always lesser than right
+        while(left<right){
+            if(possible.charAt(left)!=possible.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+            }
+        // if the left==right,it is palindrome
+        return true;
+        }
+    }
