@@ -1,0 +1,80 @@
+package viva3_sem1;
+
+public class Room {
+    //instance and static variables
+    private String roomNumber;
+    private String roomType;
+    private double rentalPrice;
+    private static int totalRooms;
+    
+    //constructor
+    public Room(String roomNumber, String roomType, double rentalPrice){
+        this.roomNumber=roomNumber;
+        this.roomType=roomType;
+        this.rentalPrice=rentalPrice;
+        totalRooms++;
+    }
+    //accesor and mutator
+    public String getroomNumber() {
+        return roomNumber;
+
+}
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public String getroomType() {
+        return roomType;
+    
+}
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public double getrentalPrice() {
+        return rentalPrice;
+    }
+    public void setrentalPrice(double rentalPrice) {
+        this.rentalPrice = rentalPrice;
+    }
+
+//method overloading
+    public double calculateRent(int days) {
+        return days * rentalPrice;
+    }
+    public double calculateRent(int days, double discount) {
+        return days * rentalPrice*discount;
+    }
+    public static Integer gettotalRooms(){
+        return totalRooms;
+    }    
+    public static void displayRoomDetails(Room Room){ 
+        System.out.println("Room Number: "+Room.getroomNumber());
+        System.out.println("Room Type: "+Room.getroomType());
+        System.out.println("Room Price per month: "+Room.getrentalPrice());
+        System.out.println("Total Room: "+Room.gettotalRooms());
+    }
+    public static void main(String[] args) {
+    int days=3;
+    double discount=10.0;
+        Room room1=new Room("101","Single",100.00);
+        Room room2=new Room("201","Double",250.00);
+        Room room3=new Room("301","Double",400.00);
+        System.out.println("Room 1 Details:");
+        Room.displayRoomDetails(room1);
+        System.out.println("\nRoom 2 Details:");
+        Room.displayRoomDetails(room2);
+        System.out.println("\nRoom 3 Details:");
+        Room.displayRoomDetails(room3);
+        
+        System.out.println("\nRoom 1 Rent for " + days + " days: $" + room1.calculateRent(days));
+        System.out.println("Room 1 Rent for " + days + " days with " + discount + "% discount: $" + room1.calculateRent(days, discount));
+
+        System.out.println("\nRoom 2 Rent for " + days + " days: $" + room2.calculateRent(days));
+        System.out.println("Room 2 Rent for " + days + " days with " + discount + "% discount: $" + room2.calculateRent(days, discount));
+        
+        System.out.println("\nRoom 3 Rent for " + days + " days: $" + room3.calculateRent(days));
+        System.out.println("Room 3 Rent for " + days + " days with " + discount + "% discount: $" + room3.calculateRent(days, discount));
+        }
+        }
+    
