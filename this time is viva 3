@@ -40,10 +40,10 @@ public class Room {
 
 //method overloading
     public double calculateRent(int days) {
-        return days * rentalPrice;
+        return (days * rentalPrice)/30;
     }
     public double calculateRent(int days, double discount) {
-        return days * rentalPrice*discount;
+        return (days * rentalPrice)/30*discount;
     }
     public static Integer gettotalRooms(){
         return totalRooms;
@@ -56,10 +56,10 @@ public class Room {
     }
     public static void main(String[] args) {
     int days=3;
-    double discount=10.0;
-        Room room1=new Room("101","Single",100.00);
-        Room room2=new Room("201","Double",250.00);
-        Room room3=new Room("301","Double",400.00);
+    double discount=0.90;
+        Room room1=new Room("101","Single",300.00);
+        Room room2=new Room("201","Double",360.00);
+        Room room3=new Room("301","Suite",900.00);
         System.out.println("Room 1 Details:");
         Room.displayRoomDetails(room1);
         System.out.println("\nRoom 2 Details:");
@@ -77,4 +77,3 @@ public class Room {
         System.out.println("Room 3 Rent for " + days + " days with " + discount + "% discount: $" + room3.calculateRent(days, discount));
         }
         }
-    
